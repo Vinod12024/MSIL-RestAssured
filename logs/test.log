@@ -1,0 +1,568 @@
+2025-09-17 19:44:00 [main] INFO  stepDefinitions:27 -Base URI set to: https://api.sandbox.beckn.juspay.in/dev/dobpp/ui
+2025-09-17 19:44:45 [main] INFO  stepDefinitions:26 -Base URI set to: https://api.sandbox.beckn.juspay.in/dev/dobpp/ui
+2025-09-17 19:44:45 [main] INFO  stepDefinitions:31 -Sending Auth API request with mobileNumber=6378299819, countryCode=+91, merchantId=7f7896dd-787e-4a0b-8675-e9e6fe93bb8f, city=Delhi
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:43 -Auth API Response: {
+    "attempts": 3,
+    "authId": "7ddcf035-3528-4bac-b612-06cbb6de87d2"
+}
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:44 -Extracted Auth ID: 7ddcf035-3528-4bac-b612-06cbb6de87d2
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:49 -Validating Auth API status code. Expected=200, Actual=200
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:63 -Sending Verify API request with otp=7891 and deviceToken=5497873d-10ca-42f3-8a32-22de4c916026
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:73 -Verify API Response: {
+    "person": {
+        "firstName": "Prithvi Driver",
+        "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "language": "ENGLISH",
+        "lastName": null,
+        "maskedDeviceToken": "549...026",
+        "maskedMobileNumber": "637...819",
+        "middleName": null,
+        "role": "DRIVER",
+        "whatsappNotificationEnrollStatus": "OPT_IN"
+    },
+    "token": "ae0bab6d-5fe1-4d3d-884d-eb5e8912e33e"
+}
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:75 -Extracted token: ae0bab6d-5fe1-4d3d-884d-eb5e8912e33e
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:80 -Validating Verify API status code. Expected=200, Actual=200
+2025-09-17 19:44:46 [main] INFO  stepDefinitions:87 -Sending Driver Location API request with lat=12.9716, lon=77.5946
+2025-09-17 19:44:47 [main] INFO  stepDefinitions:99 -Driver Location API Response: 
+2025-09-17 19:44:47 [main] INFO  stepDefinitions:104 -Validating Driver Location API status code. Expected=200, Actual=200
+2025-09-17 19:44:47 [main] INFO  stepDefinitions:111 -Sending SetActivity API request with mode=ONLINE, active=true
+2025-09-17 19:44:48 [main] INFO  stepDefinitions:121 -SetActivity API Response: {
+    "result": "Success"
+}
+2025-09-17 19:44:48 [main] INFO  stepDefinitions:122 -Status Code: 200
+2025-09-17 19:44:48 [main] INFO  stepDefinitions:127 -Validating SetActivity API status code. Expected=200, Actual=200
+2025-09-17 19:44:48 [main] INFO  stepDefinitions:134 -Sending Driver Profile API request
+2025-09-17 19:44:49 [main] INFO  stepDefinitions:136 -Driver Profile API Response: {
+    "aadhaarCardPhoto": null,
+    "active": true,
+    "alternateNumber": null,
+    "assignedRidesCountDaily": 2,
+    "assignedRidesCountInWindow": 8,
+    "assignedRidesCountWeekly": 8,
+    "autoPayStatus": "ACTIVE",
+    "bankDetails": null,
+    "blockExpiryTime": "2024-10-04T09:35:00.132862Z",
+    "blockStateModifier": null,
+    "blocked": false,
+    "blockedReasonFlag": null,
+    "bundleVersion": {
+        "build": null,
+        "maintenance": 118,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "canDowngradeToHatchback": false,
+    "canDowngradeToSedan": false,
+    "canDowngradeToTaxi": false,
+    "canSwitchToInterCity": true,
+    "canSwitchToIntraCity": true,
+    "canSwitchToRental": true,
+    "cancellationRateInWindow": 0,
+    "cancellationRateSlabConfig": {
+        "dailySlabs": [
+            
+        ],
+        "weeklySlabs": [
+            
+        ]
+    },
+    "cancelledRidesCountDaily": 0,
+    "cancelledRidesCountInWindow": 0,
+    "cancelledRidesCountWeekly": 0,
+    "checkIfACWorking": false,
+    "clientVersion": {
+        "build": null,
+        "maintenance": 39,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "currentDues": 27,
+    "currentDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "driverGoHomeInfo": {
+        "cnt": 2,
+        "driverGoHomeRequestId": null,
+        "goHomeReferenceTime": "2025-09-18T00:00:00Z",
+        "isOnRide": false,
+        "status": null,
+        "validTill": null
+    },
+    "driverTags": {
+        "PetDriver": "true"
+    },
+    "dynamicReferralCode": "0283",
+    "email": null,
+    "enabled": true,
+    "enabledAt": "2024-05-02T08:35:42.329621Z",
+    "favCount": 8,
+    "firstName": "Prithvi Driver",
+    "fleetOwnerId": "3ff75338-712c-4dbb-9279-ee96f4ed06b9",
+    "freeTrialDays": 7,
+    "freeTrialDaysLeft": 0,
+    "freeTrialRides": 5,
+    "frontendConfigHash": null,
+    "gender": "UNKNOWN",
+    "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+    "isGoHomeEnabled": false,
+    "isOnFreeTrial": false,
+    "isPayoutEnabled": false,
+    "isPetModeEnabled": true,
+    "isSilentModeEnabled": null,
+    "isSpecialLocWarrior": false,
+    "isSubscriptionCityChanged": true,
+    "isSubscriptionEnabledAtCategoryLevel": false,
+    "isSubscriptionVehicleCategoryChanged": false,
+    "isVehicleSupported": true,
+    "language": "ENGLISH",
+    "lastName": null,
+    "linkedVehicle": {
+        "capacity": 5,
+        "category": "CAR",
+        "color": "CLASSICGRE",
+        "createdAt": "2024-07-08T09:52:15.132001Z",
+        "driverId": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "model": "TOYOTA ETIOS",
+        "registrationNo": "KA51AA8545",
+        "serviceTierType": "COMFY",
+        "variant": "SEDAN",
+        "vehicleName": null
+    },
+    "manualDues": 27,
+    "manualDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "maskedDeviceToken": "549...026",
+    "maxPickupRadius": null,
+    "mediaUrl": null,
+    "middleName": null,
+    "mobileNumber": "6378299819",
+    "mode": "ONLINE",
+    "numberOfRides": 268,
+    "nyClubConsent": null,
+    "onRide": false,
+    "onboardingVehicleCategory": null,
+    "operatingCity": "std:011",
+    "operatorId": null,
+    "operatorReferralCode": null,
+    "organization": {
+        "contactNumber": "Unknown",
+        "description": null,
+        "enabled": true,
+        "id": "7f7896dd-787e-4a0b-8675-e9e6fe93bb8f",
+        "name": "NAMMA_YATRI",
+        "status": "APPROVED"
+    },
+    "overchargingTag": null,
+    "payerVpa": "vinaykumarkm091@ybl",
+    "paymentPending": true,
+    "payoutRewardAmount": 1,
+    "payoutVpa": null,
+    "payoutVpaBankAccount": null,
+    "payoutVpaStatus": null,
+    "planMandatoryForCategory": false,
+    "qrUrl": null,
+    "rating": 5,
+    "reactVersion": null,
+    "referralCode": "002595",
+    "ridesWithFareIssues": null,
+    "safetyScore": null,
+    "safetyTag": null,
+    "softBlockExpiryTime": null,
+    "softBlockReasonFlag": null,
+    "softBlockStiers": null,
+    "subscribed": true,
+    "subscriptionDown": false,
+    "subscriptionEnabledForVehicleCategory": false,
+    "totalRidesConsideredForFareIssues": null,
+    "totalRidesTaken": null,
+    "tripDistanceMaxThreshold": null,
+    "tripDistanceMinThreshold": null,
+    "verified": false,
+    "windowSize": 14
+}
+2025-09-17 19:44:49 [main] INFO  stepDefinitions:142 -Extracted variant: null
+2025-09-17 20:28:09 [main] INFO  stepDefinitions:26 -Base URI set to: https://api.sandbox.beckn.juspay.in/dev/dobpp/ui
+2025-09-17 20:28:09 [main] INFO  stepDefinitions:31 -Sending Auth API request with mobileNumber=6378299819, countryCode=+91, merchantId=7f7896dd-787e-4a0b-8675-e9e6fe93bb8f, city=Delhi
+2025-09-17 20:28:10 [main] INFO  stepDefinitions:43 -Auth API Response: {
+    "attempts": 3,
+    "authId": "f8946beb-895d-478d-879d-446b6470c8a8"
+}
+2025-09-17 20:28:10 [main] INFO  stepDefinitions:44 -Extracted Auth ID: f8946beb-895d-478d-879d-446b6470c8a8
+2025-09-17 20:28:10 [main] INFO  stepDefinitions:49 -Validating Auth API status code. Expected=200, Actual=200
+2025-09-17 20:28:10 [main] INFO  stepDefinitions:63 -Sending Verify API request with otp=7891 and deviceToken=5497873d-10ca-42f3-8a32-22de4c916026
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:73 -Verify API Response: {
+    "person": {
+        "firstName": "Prithvi Driver",
+        "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "language": "ENGLISH",
+        "lastName": null,
+        "maskedDeviceToken": "549...026",
+        "maskedMobileNumber": "637...819",
+        "middleName": null,
+        "role": "DRIVER",
+        "whatsappNotificationEnrollStatus": "OPT_IN"
+    },
+    "token": "1bdd2965-eba6-4666-8f8e-9c8aa5a0cd1b"
+}
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:75 -Extracted token: 1bdd2965-eba6-4666-8f8e-9c8aa5a0cd1b
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:80 -Validating Verify API status code. Expected=200, Actual=200
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:87 -Sending Driver Location API request with lat=12.9716, lon=77.5946
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:99 -Driver Location API Response: 
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:104 -Validating Driver Location API status code. Expected=200, Actual=200
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:111 -Sending SetActivity API request with mode=ONLINE, active=true
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:121 -SetActivity API Response: {
+    "result": "Success"
+}
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:122 -Status Code: 200
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:127 -Validating SetActivity API status code. Expected=200, Actual=200
+2025-09-17 20:28:11 [main] INFO  stepDefinitions:134 -Sending Driver Profile API request
+2025-09-17 20:28:12 [main] INFO  stepDefinitions:136 -Driver Profile API Response: {
+    "aadhaarCardPhoto": null,
+    "active": true,
+    "alternateNumber": null,
+    "assignedRidesCountDaily": 2,
+    "assignedRidesCountInWindow": 8,
+    "assignedRidesCountWeekly": 8,
+    "autoPayStatus": "ACTIVE",
+    "bankDetails": null,
+    "blockExpiryTime": "2024-10-04T09:35:00.132862Z",
+    "blockStateModifier": null,
+    "blocked": false,
+    "blockedReasonFlag": null,
+    "bundleVersion": {
+        "build": null,
+        "maintenance": 118,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "canDowngradeToHatchback": false,
+    "canDowngradeToSedan": false,
+    "canDowngradeToTaxi": false,
+    "canSwitchToInterCity": true,
+    "canSwitchToIntraCity": true,
+    "canSwitchToRental": true,
+    "cancellationRateInWindow": 0,
+    "cancellationRateSlabConfig": {
+        "dailySlabs": [
+            
+        ],
+        "weeklySlabs": [
+            
+        ]
+    },
+    "cancelledRidesCountDaily": 0,
+    "cancelledRidesCountInWindow": 0,
+    "cancelledRidesCountWeekly": 0,
+    "checkIfACWorking": false,
+    "clientVersion": {
+        "build": null,
+        "maintenance": 39,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "currentDues": 27,
+    "currentDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "driverGoHomeInfo": {
+        "cnt": 2,
+        "driverGoHomeRequestId": null,
+        "goHomeReferenceTime": "2025-09-18T00:00:00Z",
+        "isOnRide": false,
+        "status": null,
+        "validTill": null
+    },
+    "driverTags": {
+        "PetDriver": "true"
+    },
+    "dynamicReferralCode": "0284",
+    "email": null,
+    "enabled": true,
+    "enabledAt": "2024-05-02T08:35:42.329621Z",
+    "favCount": 8,
+    "firstName": "Prithvi Driver",
+    "fleetOwnerId": "3ff75338-712c-4dbb-9279-ee96f4ed06b9",
+    "freeTrialDays": 7,
+    "freeTrialDaysLeft": 0,
+    "freeTrialRides": 5,
+    "frontendConfigHash": null,
+    "gender": "UNKNOWN",
+    "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+    "isGoHomeEnabled": false,
+    "isOnFreeTrial": false,
+    "isPayoutEnabled": false,
+    "isPetModeEnabled": true,
+    "isSilentModeEnabled": null,
+    "isSpecialLocWarrior": false,
+    "isSubscriptionCityChanged": true,
+    "isSubscriptionEnabledAtCategoryLevel": false,
+    "isSubscriptionVehicleCategoryChanged": false,
+    "isVehicleSupported": true,
+    "language": "ENGLISH",
+    "lastName": null,
+    "linkedVehicle": {
+        "capacity": 5,
+        "category": "CAR",
+        "color": "CLASSICGRE",
+        "createdAt": "2024-07-08T09:52:15.132001Z",
+        "driverId": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "model": "TOYOTA ETIOS",
+        "registrationNo": "KA51AA8545",
+        "serviceTierType": "COMFY",
+        "variant": "SEDAN",
+        "vehicleName": null
+    },
+    "manualDues": 27,
+    "manualDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "maskedDeviceToken": "549...026",
+    "maxPickupRadius": null,
+    "mediaUrl": null,
+    "middleName": null,
+    "mobileNumber": "6378299819",
+    "mode": "ONLINE",
+    "numberOfRides": 268,
+    "nyClubConsent": null,
+    "onRide": false,
+    "onboardingVehicleCategory": null,
+    "operatingCity": "std:011",
+    "operatorId": null,
+    "operatorReferralCode": null,
+    "organization": {
+        "contactNumber": "Unknown",
+        "description": null,
+        "enabled": true,
+        "id": "7f7896dd-787e-4a0b-8675-e9e6fe93bb8f",
+        "name": "NAMMA_YATRI",
+        "status": "APPROVED"
+    },
+    "overchargingTag": null,
+    "payerVpa": "vinaykumarkm091@ybl",
+    "paymentPending": true,
+    "payoutRewardAmount": 1,
+    "payoutVpa": null,
+    "payoutVpaBankAccount": null,
+    "payoutVpaStatus": null,
+    "planMandatoryForCategory": false,
+    "qrUrl": null,
+    "rating": 5,
+    "reactVersion": null,
+    "referralCode": "002595",
+    "ridesWithFareIssues": null,
+    "safetyScore": null,
+    "safetyTag": null,
+    "softBlockExpiryTime": null,
+    "softBlockReasonFlag": null,
+    "softBlockStiers": null,
+    "subscribed": true,
+    "subscriptionDown": false,
+    "subscriptionEnabledForVehicleCategory": false,
+    "totalRidesConsideredForFareIssues": null,
+    "totalRidesTaken": null,
+    "tripDistanceMaxThreshold": null,
+    "tripDistanceMinThreshold": null,
+    "verified": false,
+    "windowSize": 14
+}
+2025-09-17 20:28:12 [main] INFO  stepDefinitions:142 -Extracted variant: null
+2025-09-17 21:06:00 [main] INFO  stepDefinitions:26 -Base URI set to: https://api.sandbox.beckn.juspay.in/dev/dobpp/ui
+2025-09-17 21:06:00 [main] INFO  stepDefinitions:31 -Sending Auth API request with mobileNumber=6378299819, countryCode=+91, merchantId=7f7896dd-787e-4a0b-8675-e9e6fe93bb8f, city=Delhi
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:43 -Auth API Response: {
+    "attempts": 3,
+    "authId": "44f96e3d-2ccd-4bee-974f-026babbe3e33"
+}
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:44 -Extracted Auth ID: 44f96e3d-2ccd-4bee-974f-026babbe3e33
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:49 -Validating Auth API status code. Expected=200, Actual=200
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:63 -Sending Verify API request with otp=7891 and deviceToken=5497873d-10ca-42f3-8a32-22de4c916026
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:73 -Verify API Response: {
+    "person": {
+        "firstName": "Prithvi Driver",
+        "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "language": "ENGLISH",
+        "lastName": null,
+        "maskedDeviceToken": "549...026",
+        "maskedMobileNumber": "637...819",
+        "middleName": null,
+        "role": "DRIVER",
+        "whatsappNotificationEnrollStatus": "OPT_IN"
+    },
+    "token": "8126910e-ab57-4223-8a7b-5d329f1b28e5"
+}
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:75 -Extracted token: 8126910e-ab57-4223-8a7b-5d329f1b28e5
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:80 -Validating Verify API status code. Expected=200, Actual=200
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:87 -Sending Driver Location API request with lat=12.9716, lon=77.5946
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:99 -Driver Location API Response: 
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:104 -Validating Driver Location API status code. Expected=200, Actual=200
+2025-09-17 21:06:01 [main] INFO  stepDefinitions:111 -Sending SetActivity API request with mode=ONLINE, active=true
+2025-09-17 21:06:02 [main] INFO  stepDefinitions:121 -SetActivity API Response: {
+    "result": "Success"
+}
+2025-09-17 21:06:02 [main] INFO  stepDefinitions:122 -Status Code: 200
+2025-09-17 21:06:02 [main] INFO  stepDefinitions:127 -Validating SetActivity API status code. Expected=200, Actual=200
+2025-09-17 21:06:02 [main] INFO  stepDefinitions:134 -Sending Driver Profile API request
+2025-09-17 21:06:03 [main] INFO  stepDefinitions:136 -Driver Profile API Response: {
+    "aadhaarCardPhoto": null,
+    "active": true,
+    "alternateNumber": null,
+    "assignedRidesCountDaily": 2,
+    "assignedRidesCountInWindow": 8,
+    "assignedRidesCountWeekly": 8,
+    "autoPayStatus": "ACTIVE",
+    "bankDetails": null,
+    "blockExpiryTime": "2024-10-04T09:35:00.132862Z",
+    "blockStateModifier": null,
+    "blocked": false,
+    "blockedReasonFlag": null,
+    "bundleVersion": {
+        "build": null,
+        "maintenance": 118,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "canDowngradeToHatchback": false,
+    "canDowngradeToSedan": false,
+    "canDowngradeToTaxi": false,
+    "canSwitchToInterCity": true,
+    "canSwitchToIntraCity": true,
+    "canSwitchToRental": true,
+    "cancellationRateInWindow": 0,
+    "cancellationRateSlabConfig": {
+        "dailySlabs": [
+            
+        ],
+        "weeklySlabs": [
+            
+        ]
+    },
+    "cancelledRidesCountDaily": 0,
+    "cancelledRidesCountInWindow": 0,
+    "cancelledRidesCountWeekly": 0,
+    "checkIfACWorking": false,
+    "clientVersion": {
+        "build": null,
+        "maintenance": 39,
+        "major": 3,
+        "minor": 0,
+        "preRelease": null
+    },
+    "currentDues": 27,
+    "currentDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "driverGoHomeInfo": {
+        "cnt": 2,
+        "driverGoHomeRequestId": null,
+        "goHomeReferenceTime": "2025-09-18T00:00:00Z",
+        "isOnRide": false,
+        "status": null,
+        "validTill": null
+    },
+    "driverTags": {
+        "PetDriver": "true"
+    },
+    "dynamicReferralCode": "0285",
+    "email": null,
+    "enabled": true,
+    "enabledAt": "2024-05-02T08:35:42.329621Z",
+    "favCount": 8,
+    "firstName": "Prithvi Driver",
+    "fleetOwnerId": "3ff75338-712c-4dbb-9279-ee96f4ed06b9",
+    "freeTrialDays": 7,
+    "freeTrialDaysLeft": 0,
+    "freeTrialRides": 5,
+    "frontendConfigHash": null,
+    "gender": "UNKNOWN",
+    "id": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+    "isGoHomeEnabled": false,
+    "isOnFreeTrial": false,
+    "isPayoutEnabled": false,
+    "isPetModeEnabled": true,
+    "isSilentModeEnabled": null,
+    "isSpecialLocWarrior": false,
+    "isSubscriptionCityChanged": true,
+    "isSubscriptionEnabledAtCategoryLevel": false,
+    "isSubscriptionVehicleCategoryChanged": false,
+    "isVehicleSupported": true,
+    "language": "ENGLISH",
+    "lastName": null,
+    "linkedVehicle": {
+        "capacity": 5,
+        "category": "CAR",
+        "color": "CLASSICGRE",
+        "createdAt": "2024-07-08T09:52:15.132001Z",
+        "driverId": "232d4794-e7f8-43e8-86f9-b508bb5093fe",
+        "model": "TOYOTA ETIOS",
+        "registrationNo": "KA51AA8545",
+        "serviceTierType": "COMFY",
+        "variant": "SEDAN",
+        "vehicleName": null
+    },
+    "manualDues": 27,
+    "manualDuesWithCurrency": {
+        "amount": 27,
+        "currency": "INR"
+    },
+    "maskedDeviceToken": "549...026",
+    "maxPickupRadius": null,
+    "mediaUrl": null,
+    "middleName": null,
+    "mobileNumber": "6378299819",
+    "mode": "ONLINE",
+    "numberOfRides": 268,
+    "nyClubConsent": null,
+    "onRide": false,
+    "onboardingVehicleCategory": null,
+    "operatingCity": "std:011",
+    "operatorId": null,
+    "operatorReferralCode": null,
+    "organization": {
+        "contactNumber": "Unknown",
+        "description": null,
+        "enabled": true,
+        "id": "7f7896dd-787e-4a0b-8675-e9e6fe93bb8f",
+        "name": "NAMMA_YATRI",
+        "status": "APPROVED"
+    },
+    "overchargingTag": null,
+    "payerVpa": "vinaykumarkm091@ybl",
+    "paymentPending": true,
+    "payoutRewardAmount": 1,
+    "payoutVpa": null,
+    "payoutVpaBankAccount": null,
+    "payoutVpaStatus": null,
+    "planMandatoryForCategory": false,
+    "qrUrl": null,
+    "rating": 5,
+    "reactVersion": null,
+    "referralCode": "002595",
+    "ridesWithFareIssues": null,
+    "safetyScore": null,
+    "safetyTag": null,
+    "softBlockExpiryTime": null,
+    "softBlockReasonFlag": null,
+    "softBlockStiers": null,
+    "subscribed": true,
+    "subscriptionDown": false,
+    "subscriptionEnabledForVehicleCategory": false,
+    "totalRidesConsideredForFareIssues": null,
+    "totalRidesTaken": null,
+    "tripDistanceMaxThreshold": null,
+    "tripDistanceMinThreshold": null,
+    "verified": false,
+    "windowSize": 14
+}
+2025-09-17 21:06:03 [main] INFO  stepDefinitions:142 -Extracted variant: null
