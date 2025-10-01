@@ -10,7 +10,6 @@ public class TestData{
     public static final String COUNTRY_CODE = ConfigReader.get("countryCode");
     public static final String DEVICE_TOKEN = ConfigReader.get("deviceToken");
     public static final String OPERATING_CITY = ConfigReader.get("merchantOperatingCity");
-
-
+    public static final String USER_BASE_URI = ConfigReader.get("userbaseURI");
 
 }

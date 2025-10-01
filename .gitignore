@@ -1,0 +1,12 @@
+# Maven
+target/
+logs/
+allure-results/
+allure-report/
+*.log
+
+# IntelliJ / VSCode
+.idea/
+.vscode/
+*.iml
+
