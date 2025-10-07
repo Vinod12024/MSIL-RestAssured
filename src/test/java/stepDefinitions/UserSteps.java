@@ -121,10 +121,7 @@ public class UserSteps {
                     .header("token", usertoken)
                     .pathParam("searchId", searchId)
                     .when()
-                    .get("/rideSearch/{searchId}/results");
-    
-            // System.out.println("Response attempt " + (i + 1) + ": " + response.getBody().asString());
-    
+                    .get("/rideSearch/{searchId}/results");    
             List<Map<String, Object>> estimates = response.jsonPath().getList("estimates");
             boolean allJourneysLoaded = response.jsonPath().getBoolean("allJourneysLoaded");
             if (estimates != null && !estimates.isEmpty() && Boolean.TRUE.equals(allJourneysLoaded)) {

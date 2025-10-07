@@ -12,7 +12,7 @@ Feature: Ride Flow End-to-End
     Then setActivity status code should be 200
     And Driver fetches profile and stores variant
     Given User authenticates and gets token
-    When User sends Auth request with mobile "8978567859"
+    When User sends Auth request with mobile "8000067859"
     When User sends Verify request with otp "7891" and deviceToken "5497873d-10ca-42f3-8a32-22de4c916556"
     Given User searches ride with source and destination
     Given User fetches search results and selects estimate by variant
