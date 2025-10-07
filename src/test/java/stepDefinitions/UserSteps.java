@@ -18,21 +18,20 @@ import io.cucumber.java.en.Then;
 public class UserSteps {
     private static final Logger logger = LogManager.getLogger(UserSteps.class);
     Response response;
-    String authId;
-    String token;
+    String userauthId;
+    String usertoken;
     String searchId;
     String estimateId;
     public static String rideotp;
-    public static double sourceLat = 13.250103619616711;
-    public static double sourceLon= 78.35432585014784;
-    public static double destinationLat= 13.253025090404359;
-    public static double destinationLon =78.36543019128682;
+    public static double sourceLat = 13.28874569248109;
+    public static double sourceLon= 78.29644181186218;
+    public static double destinationLat= 13.281656653247367;
+    public static double destinationLon =78.29551758203483;
 
     @Given("User authenticates and gets token")
     public void user_api_base_is_set() {
         RestAssured.baseURI = USER_BASE_URI;
         logger.info("User Base URI: {}", USER_BASE_URI);
-
     }
 
     @When("User sends Auth request with mobile {string}")
@@ -43,8 +42,8 @@ public class UserSteps {
             .body("{\"mobileNumber\":\"" + mobile + "\",\"mobileCountryCode\":\"+91\",\"merchantId\":\"NAMMA_YATRI\"}")
             .when().post("/auth");
 
-        authId = response.jsonPath().getString("authId");
-        logger.info("authId of user is:"+authId);
+        userauthId = response.jsonPath().getString("authId");
+        logger.info("authId of user is:"+userauthId);
     }
     
     @Then("User Auth status should be {int}")
@@ -57,9 +56,9 @@ public class UserSteps {
         response = given()
             .header("Content-Type", "application/json;charset=utf-8")
             .body("{\"otp\":\"" + otp + "\",\"deviceToken\":\"" + deviceToken + "\"}")
-            .when().post("/auth/" + authId + "/verify");
-        token = response.jsonPath().getString("token");
-        logger.info("user token is:" +token);
+            .when().post("/auth/" + userauthId + "/verify");
+            usertoken = response.jsonPath().getString("token");
+        logger.info("user token is:" +usertoken);
 
     }
     
@@ -70,7 +69,7 @@ public class UserSteps {
 
     @Given("User searches ride with source and destination")
     public void user_searches_ride_with_source_and_destination() {
-       response = given().header("Content-Type", "application/json").header("token", token).body("{"
+       response = given().header("Content-Type", "application/json").header("token", usertoken).body("{"
        + "\"fareProductType\": \"ONE_WAY\","
        + "\"contents\": {"
        + "    \"origin\": {"
@@ -113,13 +112,13 @@ public class UserSteps {
     }
     @Given("User fetches search results and selects estimate by variant")
     public void user_fetches_search_results_and_selects_estimate_by_variant() throws InterruptedException {
-        int retries = 5;
+        int retries = 8;
         int waitMs = 2000;
     
         for (int i = 0; i < retries; i++) {
             response = given()
                     .header("Content-Type", "application/json")
-                    .header("token", token)
+                    .header("token", usertoken)
                     .pathParam("searchId", searchId)
                     .when()
                     .get("/rideSearch/{searchId}/results");
@@ -154,14 +153,15 @@ public class UserSteps {
     }
     
     @Given("User confirms estimate")
-    public void user_confirms_estimate() {
-        response = given().header("Content-Type", "application/json").header("token", token).pathParam("estimateId", estimateId).body("{"
+    public void user_confirms_estimate(){
+        response = given().header("Content-Type", "application/json").header("token", usertoken).log().uri().pathParam("estimateId", estimateId).body("{"
         + "\"customerExtraFee\": null,"
         + "\"autoAssignEnabledV2\": true,"
         + "\"autoAssignEnabled\": true"
         + "}").
         when().post("/estimate/{estimateId}/select2");
         logger.info("Journey Id is:" +response.jsonPath().getString("journeyId"));
+       
     }
         @When("User gets ride booking details and OTP")
     public void user_gets_ride_booking_details_and_otp() throws InterruptedException{
@@ -169,7 +169,7 @@ public class UserSteps {
         int waitMs =2000;
 
         for(int i=0; i<retries;i++){
-            response = given().header("token", token).queryParams("limit", "1", "onlyActive", "true").when().get("/rideBooking/list");
+            response = given().header("token", usertoken).queryParams("limit", "1", "onlyActive", "true").when().get("/rideBooking/list");
             // String respBody = response.getBody().asString();
             // logger.info("User ride booking list {}:{}", (i+1), respBody);
 
@@ -178,13 +178,10 @@ public class UserSteps {
                 rideotp = response.jsonPath().getString("list[0].rideList[0].rideOtp");
                 logger.info("rideotp={}", rideotp);
                 return;
-
             }
             Thread.sleep(waitMs);
-
                 }
                 throw new RuntimeException ("No Active ride found after pooling" +retries+ "times.");
-
 }
 }
 

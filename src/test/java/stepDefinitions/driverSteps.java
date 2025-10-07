@@ -20,8 +20,8 @@ public class driverSteps{
     private static final Logger logger = LogManager.getLogger(driverSteps.class);
 
     Response response;
-    static String authId;
-    static String token;
+    static String driverauthId;
+    static String drivertoken;
     static String variant;
     static String driverId;
     static String searchRequestId;
@@ -46,9 +46,9 @@ public class driverSteps{
         + "\"merchantOperatingCity\": \"" +OPERATING_CITY+ "\""
         + "}").when().post("auth");
 
-        authId = response.jsonPath().getString("authId");
+        driverauthId = response.jsonPath().getString("authId");
         // logger.info("Auth API Response: {}", response.getBody().asPrettyString());
-        logger.info("Extracted Auth ID: {}", authId);
+        logger.info("Extracted Auth ID: {}", driverauthId);
     }
 
     @Then("auth id should be successfully created and the status code is {int}")
@@ -66,7 +66,7 @@ public class driverSteps{
 
     @When("I send a verify request with otp {string} and deviceToken {string}")
     public void i_send_verify_request(String otp, String deviceToken) {
-        String verifyEndpoint = "auth/" + authId + "/verify";
+        String verifyEndpoint = "auth/" + driverauthId + "/verify";
         logger.info("Sending Verify API request with otp={} and deviceToken={}", otp, deviceToken);
 
         response = given()
@@ -79,8 +79,8 @@ public class driverSteps{
 
         driverId = response.jsonPath().getString("person.id");
         logger.info("Extracted driverId: {}", driverId);
-        token = response.jsonPath().getString("token");
-        logger.info("Extracted token: {}", token);
+        drivertoken = response.jsonPath().getString("token");
+        logger.info("Extracted token: {}", drivertoken);
     }
 
     @Then("verify status code should be {int}")
@@ -96,10 +96,10 @@ public class driverSteps{
 
         String currentTime = ZonedDateTime.now(java.time.ZoneOffset.UTC).format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"));
         response = given().header("Content-Type", "application/json;charset=utf-8")
-              .header("token", token)
+              .header("token", drivertoken)
               .header("mId", MARCHANT_ID)
               .header("dm", "ONLINE")
-              .header("vt", "SEDAN")
+              .header("vt", "AUTO_RICKSHAW")
               .body("[{"
               + "\"pt\": {\"lat\": " + lat + ", \"lon\": " + lon + "},"
               + "\"ts\": \"" + currentTime + "\""
@@ -121,10 +121,10 @@ public class driverSteps{
         logger.info("Sending SetActivity API request with mode=ONLINE, active=true");
 
         response = given()
-            .header("Content-Type", "application/json")
-            .header("token", token)
+            .header("Content-Type", "application/json;charset=utf-8")
+            .header("token", drivertoken)
             .queryParam("active", true)
-            .queryParam("mode", "\"ONLINE\"")   
+            .queryParam("mode", "\"ONLINE\"") 
             .when()
             .post("driver/setActivity");
 
@@ -141,7 +141,7 @@ public class driverSteps{
     @When("Driver fetches profile and stores variant")
     public void i_send_driver_profile(){
         logger.info("Sending Driver Profile API request");
-        response = given().header("token", token).when().get("driver/profile");
+        response = given().header("token", drivertoken).when().get("driver/profile");
         variant = response.jsonPath().getString("linkedVehicle.variant");
         logger.info("Driver variant:{}", variant);
     }
@@ -151,9 +151,9 @@ public class driverSteps{
         int retries =5;
         int waitMs =2000;
         for (int i=0; i<retries; i++){
-        response = given().header("token", token).log().uri().when().get(BASE_URI+ "driver/nearbyRideRequest");
-        // String respBody = response.getBody().asString();
-        // logger.info("Driver ride request attempt {}: {}", (i + 1), respBody);
+        response = given().header("token", drivertoken).log().uri().when().get(BASE_URI+ "driver/nearbyRideRequest");
+        String respBody = response.getBody().asString();
+        logger.info("Driver ride request attempt {}: {}", (i + 1), respBody);
             List<Map<String, Object>> requests = response.jsonPath().getList("searchRequestsForDriver");
             if (requests!=null && !requests.isEmpty()){
                 searchRequestId= response.jsonPath().getString("searchRequestsForDriver[0].searchRequestId");
@@ -166,7 +166,7 @@ public class driverSteps{
     }
     @When("Driver offers quote")
     public void driver_offer_quote(){
-        response = given().header("token", token).header("Content-Type", "application/json").body("{"
+        response = given().header("token", drivertoken).header("Content-Type", "application/json").body("{"
         + "\"searchRequestId\": \"" + searchRequestId + "\","
         + "\"offeredFare\": null"
         + "}").log().uri().when().post(BASE_URI+"driver/searchRequest/quote/offer");
@@ -179,7 +179,7 @@ public class driverSteps{
     
         for (int i = 0; i < retries; i++) {
             response = given()
-                .header("token", token)
+                .header("token", drivertoken)
                 .queryParam("limit", "1")
                 .queryParam("onlyActive", "true")
                 .when()
@@ -205,7 +205,7 @@ public class driverSteps{
 
 @When("Driver starts ride with ride id and OTP")
 public void driver_starts_ride_with_ride_id_and_otp() {
-    response = given().header("token", token).header("Content-Type", "application/json").pathParam("rideId", rideId).body("{"
+    response = given().header("token", drivertoken).header("Content-Type", "application/json").pathParam("rideId", rideId).body("{"
     + "\"rideOtp\": \"" + UserSteps.rideotp + "\","
     + "\"point\": {"
     + "    \"lat\": " + UserSteps.sourceLat + ","
@@ -215,7 +215,7 @@ public void driver_starts_ride_with_ride_id_and_otp() {
 }
 @When("Driver ends ride with ride id")
 public void driver_ends_ride_with_ride_id() {
-    response = given().header("token", token).header("Content-Type", "application/json").pathParam("rideId", rideId).body("{"
+    response = given().header("token", drivertoken).header("Content-Type", "application/json").pathParam("rideId", rideId).body("{"
     + "\"point\": {"
     + "    \"lat\": "+ UserSteps.destinationLat +","
     + "    \"lon\": "+ UserSteps.destinationLon +""
@@ -224,7 +224,7 @@ public void driver_ends_ride_with_ride_id() {
 }
 @Then("Driver sets activity to {string}")
 public void driver_sets_activity(String string) {
-response = given().header("token", token).queryParams("active", "false", "mode", "\"OFFLINE\"").when().post(BASE_URI+"driver/setActivity");
+response = given().header("token", drivertoken).queryParams("active", "false", "mode", "\"OFFLINE\"").when().post(BASE_URI+"driver/setActivity");
 }
 
 }
